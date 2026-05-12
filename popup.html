@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stock News Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <svg class="header-logo" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Stock Analyzer Logo">
+      <rect width="28" height="28" rx="7" fill="#1c2e52"/>
+      <polyline points="4,20 9,13 13,17 18,9 24,12" stroke="#4f8ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="18" cy="9" r="2.5" fill="#38c96e"/>
+      <circle cx="9"  cy="13" r="1.8" fill="#4f8ef7" opacity="0.7"/>
+      <circle cx="13" cy="17" r="1.8" fill="#4f8ef7" opacity="0.7"/>
+    </svg>
+    <span class="header-title">Stock News Analyzer</span>
+    <span class="header-subtitle">Gemini · Function Calling</span>
+  </div>
+
+  <!-- API Key -->
+  <div class="api-strip">
+    <label for="apiKey">API Key</label>
+    <input type="password" id="apiKey" placeholder="AIza..." autocomplete="off" spellcheck="false">
+    <span class="key-status" id="keyStatus">not saved</span>
+  </div>
+
+  <!-- Suggestion chips -->
+  <div class="suggestion-chips" id="chips">
+    <span class="chip" data-query="Analyze Ola Electric stock for the last 30 days">Ola Electric · 30d</span>
+    <span class="chip" data-query="Analyze Tesla (TSLA) for the last 30 days">Tesla · 30d</span>
+    <span class="chip" data-query="Analyze Reliance Industries (RELIANCE.NS) for the last month">Reliance · 1mo</span>
+    <span class="chip" data-query="Analyze Apple (AAPL) stock over last 3 weeks">Apple · 3w</span>
+  </div>
+
+  <!-- Query bar -->
+  <div class="query-bar">
+    <input type="text" id="queryInput" placeholder="e.g. Analyze Ola Electric stock for the last 30 days" autocomplete="off">
+    <button class="btn-clear" id="btnClear" title="Clear trace">✕</button>
+    <button class="btn-analyze" id="btnAnalyze">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Analyze
+    </button>
+  </div>
+
+  <!-- Trace panel -->
+  <div class="trace-panel" id="tracePanel">
+    <div class="empty-state" id="emptyState">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      <p>Enter a stock analysis query above and click <strong>Analyze</strong>.</p>
+      <span class="hint">The full agent reasoning chain will appear here,<br>step by step.</span>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div class="status-bar" id="statusBar">
+    <div class="status-dot" id="statusDot"></div>
+    <span id="statusText">Ready</span>
+    <button class="btn-logs" id="btnDownloadLogs" title="Download debug logs">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src="logger.js"></script>
+  <script src="tools.js"></script>
+  <script src="gemini.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

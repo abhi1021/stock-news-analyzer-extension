@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Stock News Analyzer",
+  "version": "1.0",
+  "description": "Analyze stock news vs price movements using Gemini AI with function calling",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.png"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*",
+    "https://query1.finance.yahoo.com/*",
+    "https://newsapi.org/*"
+  ]
+}
